@@ -4,13 +4,16 @@ const morgan = require('morgan')
 
 app.set('view engine','ejs')
 
-app.use(morgan('dev'))
+// app.use(morgan('dev'))
 
 //it will work for every route
 // app.use((req,res,next)=>{
 //     console.log("Middleware")
 //     return next()
 // })
+
+app.use(express.json())
+app.use(express.urlencoded({extended:true}))
 
 app.get('/',(req,res)=>{
     res.render('index')
@@ -30,7 +33,7 @@ app.get('/get-form-data',(req,res)=>{
     console.log(req.query)
     res.send('data received')
 })
-app.post('post-form-data',(req,res)=>{
+app.post('/post-form-data',(req,res)=>{
     console.log(req.body)
     res.send("data received")
 })
