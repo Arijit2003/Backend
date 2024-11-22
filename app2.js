@@ -26,6 +26,13 @@ app.get('/about',(req,res,next)=>{
 
 app.get('/profile',(req,res)=>res.send('Profile Page'))
 
-
+app.get('/get-form-data',(req,res)=>{ 
+    console.log(req.query)
+    res.send('data received')
+})
+app.post('post-form-data',(req,res)=>{
+    console.log(req.body)
+    res.send("data received")
+})
 
 app.listen(3000)
